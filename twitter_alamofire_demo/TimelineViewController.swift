@@ -37,7 +37,6 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     func fetchTweets() {
         APIManager.shared.getHomeTimeLine { (tweets, error) in
             if let tweets = tweets {
-                print (tweets)
                 self.tweets = tweets
                 self.refreshControl.endRefreshing()
                 self.tableView.reloadData()
