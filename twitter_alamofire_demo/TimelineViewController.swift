@@ -14,8 +14,12 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
+//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        activityIndicator.startAnimating()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -23,14 +27,28 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         
+        refreshControl = UIRefreshControl()
+                refreshControl.addTarget(self, action: #selector(TimelineViewController.didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        
+        fetchTweets()
+    }
+    
+    func fetchTweets() {
         APIManager.shared.getHomeTimeLine { (tweets, error) in
             if let tweets = tweets {
+                print (tweets)
                 self.tweets = tweets
+                self.refreshControl.endRefreshing()
                 self.tableView.reloadData()
             } else if let error = error {
                 print("Error getting home timeline: " + error.localizedDescription)
             }
         }
+    }
+    
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        fetchTweets()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,7 +57,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        
+
         cell.tweet = tweets[indexPath.row]
         
         return cell
