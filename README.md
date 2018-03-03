@@ -2,7 +2,7 @@
 
 **twitterClientApp** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **5** hours spent in total
+Time spent: **7** hours spent in total
 
 ## User Stories
 
@@ -15,13 +15,13 @@ The following **required** functionality is completed:
 - [x] User can view last 20 tweets from their home timeline with the user profile picture, username, tweet text, and timestamp. (2pts)
 - [x] User can pull to refresh. (1pt)
 - [x] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet. (2pts)
-- [ ] Using AutoLayout, the Tweet cell should adjust it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation. (1pt)
+- [x] Using AutoLayout, the Tweet cell should adjust it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation. (1pt)
 
 The following **stretch** features are implemented:
 
-- [ ] The current signed in user will be persisted across restarts. (1pt)
+- [x] The current signed in user will be persisted across restarts. (1pt)
 - [ ] Each tweet should display the relative timestamp for each tweet "8m", "7h". (1pt)
-- [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. (1pt)
+- [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. (1pt)
 - [ ] Links in tweets are clickable. (2pts)
 - [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client. (2pts)
 

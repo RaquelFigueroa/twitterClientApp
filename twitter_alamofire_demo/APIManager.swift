@@ -148,7 +148,7 @@ class APIManager: SessionManager {
         }
     }
     
-    // MARK: TODO: Retweet
+    // Retweet
     func retweet(_ tweet: Tweet, completion: @escaping (Tweet?, Error?) -> ()) {
         let urlString = "https://api.twitter.com/1.1/statuses/retweet/\(tweet.id).json"
         let parameters = ["id": tweet.id]
@@ -162,7 +162,7 @@ class APIManager: SessionManager {
             }
         }
     }
-    // MARK: TODO: Un-Retweet
+    // Un-Retweet
     func unRetweet(_ tweet: Tweet, completion: @escaping (Tweet?, Error?) -> ()) {
         let urlString = "https://api.twitter.com/1.1/statuses/unretweet/\(tweet.id).json"
         let parameters = ["id": tweet.id]

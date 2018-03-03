@@ -123,7 +123,6 @@ class TweetCell: UITableViewCell {
     }
     
     func refreshData() {
-        numReplyLabel.text = (String(tweet.retweetCount))
         numRetweetLabel.text = (String(tweet.retweetCount))
         numLikesLabel.text = (String(describing:tweet.favoriteCount!))
     }
